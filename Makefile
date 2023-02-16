@@ -6,7 +6,7 @@
 #    By: abelhadj <abelhadj@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 17:59:44 by abelhadj          #+#    #+#              #
-#    Updated: 2023/02/15 19:32:51 by abelhadj         ###   ########.fr        #
+#    Updated: 2023/02/16 18:19:48 by abelhadj         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,9 @@ LIBFT	= $(addprefix libft/, ft_calloc ft_putstr_fd ft_strcmp ft_strchr ft_strlen
 			ft_strncmp get_next_line ft_split ft_tablen)
 UTILS	= $(addprefix utils/, ft_error name_check read_map split_map free_p)
 GAME	= $(addprefix game/, game position)
+CHECK	= $(addprefix check/, check_map check_char check_cadre check_coin check_exit check_player check_rect check_path)
 
-FILES	= $(addprefix Mandatory/, so_long $(LIBFT) $(UTILS) $(GAME))
+FILES	= $(addprefix Mandatory/, so_long $(LIBFT) $(UTILS) $(CHECK) $(GAME))
 
 SRC		= $(FILES:=.c)
 OBJ		= $(FILES:=.o)
@@ -38,11 +39,11 @@ all: $(NAME)
 
 $(NAME): $(OBJ) $(HEADER)
 	@printf "$(CURSIVE)$(GRAY)	- Compiling $(NAME)... $(RESET)\n"
-	@$(CC) $(OBJ) $(INCLUDES)  -o $(NAME)
+	@$(CC) $(OBJ) $(INCLUDES) -lmlx -framework OpenGL -framework AppKit  -o $(NAME)
 	@printf "$(GREEN)    - Executable ready.\n$(RESET)"
 
 %.o: %.c $(HEADER) $(HEADER_B)
-	@$(CC) $(FLAGS) $(INCLUDES) -c $< -o $@ 
+	@$(CC) $(FLAGS) -Imlx $(INCLUDES)  -c $< -o $@ 
 
 
 clean:

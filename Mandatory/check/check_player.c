@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_map.c                                         :+:      :+:    :+:   */
+/*   check_player.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelhadj <abelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/15 16:14:54 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/02/16 15:40:14 by abelhadj         ###   ########.fr       */
+/*   Created: 2023/02/16 17:02:52 by abelhadj          #+#    #+#             */
+/*   Updated: 2023/02/16 17:03:23 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-char	*read_map(int fd)
+void	check_player(t_graph *data)
 {
-	char	*buff;
-	char	*map;
-	char	*tmp;
+	int	i;
+	int	e;
 
-	map = ft_calloc(1, 1);
-	while (1)
+	i = 0;
+	e = 0;
+	while (data->map[i])
 	{
-		buff = get_next_line(fd);
-		if (!buff)
-			break ;
-		if (ft_strlen(buff) <= 1)
-			ft_error("ERROR!\nEmpty line in map.\n");
-		tmp = map;
-		free(map);
-		map = ft_strjoin(tmp, buff);
-		free(buff);
+		if (data->map[i] == 'P')
+			e++;
+		if (e > 1)
+			ft_error("ERROR!\nThe map must contain 1 Player.\n");
+		i++;
 	}
-	return (map);
+	if (e == 0)
+		ft_error("ERROR!\nThe map must contain 1 Player.\n");
 }

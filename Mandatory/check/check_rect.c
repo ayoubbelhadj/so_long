@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_map.c                                         :+:      :+:    :+:   */
+/*   check_rect.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelhadj <abelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/15 16:14:54 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/02/16 15:40:14 by abelhadj         ###   ########.fr       */
+/*   Created: 2023/02/16 17:06:35 by abelhadj          #+#    #+#             */
+/*   Updated: 2023/02/16 17:10:09 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-char	*read_map(int fd)
+void	check_rect(t_graph *data)
 {
-	char	*buff;
-	char	*map;
-	char	*tmp;
+	int	i;
 
-	map = ft_calloc(1, 1);
-	while (1)
+	i = 0;
+	while (data->cart[i] && data->cart[i + 1])
 	{
-		buff = get_next_line(fd);
-		if (!buff)
-			break ;
-		if (ft_strlen(buff) <= 1)
-			ft_error("ERROR!\nEmpty line in map.\n");
-		tmp = map;
-		free(map);
-		map = ft_strjoin(tmp, buff);
-		free(buff);
+		if (ft_strlen(data->cart[i]) != ft_strlen(data->cart[i + 1]))
+			ft_error("ERROR!\nThe map must be rectangular.\n");
+		i++;
 	}
-	return (map);
 }

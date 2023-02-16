@@ -6,7 +6,7 @@
 /*   By: abelhadj <abelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 17:29:31 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/02/15 22:58:34 by abelhadj         ###   ########.fr       */
+/*   Updated: 2023/02/16 17:57:48 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <unistd.h>
 # include <string.h>
 # include <fcntl.h>
+# include <mlx.h>
 
 typedef struct s_pos
 {
@@ -34,7 +35,19 @@ typedef struct s_graph
 	char	*map;
 	int		x_width;
 	int		y_height;
+	void	*mlx;
+	char	*mlx_win;
 }			t_graph;
+
+/* check */
+void	check_map(t_graph *data);
+void	check_char(t_graph *data);
+void	check_cadre(t_graph *data);
+void	check_coin(t_graph *data);
+void	check_exit(t_graph *data);
+void	check_player(t_graph *data);
+void	check_rect(t_graph *data);
+void	check_path(t_graph *data, int base);
 
 /* game */
 void	game(char *map);
