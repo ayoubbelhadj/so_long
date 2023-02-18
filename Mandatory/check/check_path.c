@@ -6,7 +6,7 @@
 /*   By: abelhadj <abelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 17:06:35 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/02/16 17:53:31 by abelhadj         ###   ########.fr       */
+/*   Updated: 2023/02/17 15:47:37 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,5 @@ to catch all collectibles.\n");
 	if (base == 'E')
 		if (check_exist(map, base))
 			ft_error("ERROR!\nThere is no valid path to go the exit.\n");
+	free_p(map);
 }

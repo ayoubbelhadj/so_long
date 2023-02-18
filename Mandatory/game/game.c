@@ -6,12 +6,11 @@
 /*   By: abelhadj <abelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 17:18:49 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/02/16 18:36:34 by abelhadj         ###   ########.fr       */
+/*   Updated: 2023/02/18 20:19:03 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-#include <mlx.h>
 
 void	game(char *map)
 {
@@ -31,5 +30,10 @@ void	game(char *map)
 	data.mlx = mlx_init();
 	data.mlx_win = mlx_new_window(data.mlx, data.x_width, data.y_height,
 			"so_long");
+	img_path(&data);
+	addimg(&data);
+	data.move_cpt = 0;
+	mlx_hook(data.mlx_win, 2, 0, keys, &data);
+	mlx_hook(data.mlx_win, 17, 0, quit, &data);
 	mlx_loop(data.mlx);
 }

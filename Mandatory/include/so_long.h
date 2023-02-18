@@ -6,7 +6,7 @@
 /*   By: abelhadj <abelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 17:29:31 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/02/16 17:57:48 by abelhadj         ###   ########.fr       */
+/*   Updated: 2023/02/18 20:33:08 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,18 @@ typedef struct s_graph
 	char	*map;
 	int		x_width;
 	int		y_height;
+	int		move_cpt;
 	void	*mlx;
 	char	*mlx_win;
+	void	*wall;
+	void	*floor;
+	void	*p_front;
+	void	*p_back;
+	void	*p_left;
+	void	*p_right;
+	void	*stone;
+	void	*portal;
+	void	*portal_open;
 }			t_graph;
 
 /* check */
@@ -52,6 +62,15 @@ void	check_path(t_graph *data, int base);
 /* game */
 void	game(char *map);
 t_graph	*position(char **cart, t_graph *data);
+int		quit(t_graph *graph);
+void	move_left(t_graph *data);
+void	move_right(t_graph *data);
+void	move_down(t_graph *data);
+void	move_top(t_graph *data);
+void	img_path(t_graph *data);
+void	imgadd(t_graph *data, int x, int y, int base);
+void	addimg(t_graph *data);
+int		keys(int keyhook, t_graph *graph);
 
 /* utils */
 char	*read_map(int fd);
@@ -72,6 +91,7 @@ size_t	ft_strlen(const char *s);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*get_next_line(int fd);
 int		ft_tablen(char **tab);
+char	*ft_itoa(int n);
 
 
 #endif
