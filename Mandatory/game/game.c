@@ -6,7 +6,7 @@
 /*   By: abelhadj <abelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 17:18:49 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/02/18 20:19:03 by abelhadj         ###   ########.fr       */
+/*   Updated: 2023/02/19 21:13:16 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	game(char *map)
 	data.cart = split_map(map);
 	if (!data.cart)
 	{
-		free_p(data.cart);
+		free_cart(data.cart);
 		ft_error("ERROR!!\nMap invalid.\n");
 	}
 	data = *position(data.cart, &data);

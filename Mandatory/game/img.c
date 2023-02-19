@@ -6,7 +6,7 @@
 /*   By: abelhadj <abelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 18:58:37 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/02/18 19:45:49 by abelhadj         ###   ########.fr       */
+/*   Updated: 2023/02/19 15:20:06 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	img_path(t_graph *data)
 {
 	int	w;
 
-	data->wall = mlx_xpm_file_to_image(data->mlx, "Mandatory/assets/wall_2.xpm",
+	data->wall = mlx_xpm_file_to_image(data->mlx, "Mandatory/assets/wall.xpm",
 			&w, &w);
 	data->floor = mlx_xpm_file_to_image(data->mlx, "Mandatory/assets/floor.xpm",
 			&w, &w);
@@ -25,15 +25,15 @@ void	img_path(t_graph *data)
 	data->p_front = mlx_xpm_file_to_image(data->mlx,
 			"Mandatory/assets/player/P_front.xpm", &w, &w);
 	data->p_right = mlx_xpm_file_to_image(data->mlx,
-			"Mandatory/assets/player/P_right-1.xpm", &w, &w);
+			"Mandatory/assets/player/P_right.xpm", &w, &w);
 	data->p_left = mlx_xpm_file_to_image(data->mlx,
-			"Mandatory/assets/player/P_left-1.xpm", &w, &w);
+			"Mandatory/assets/player/P_left.xpm", &w, &w);
 	data->p_back = mlx_xpm_file_to_image(data->mlx,
 			"Mandatory/assets/player/P_back.xpm", &w, &w);
 	data->portal = mlx_xpm_file_to_image(data->mlx,
-			"Mandatory/assets/portal/portal1-0.xpm", &w, &w);
+			"Mandatory/assets/portal/portal.xpm", &w, &w);
 	data->portal_open = mlx_xpm_file_to_image(data->mlx,
-			"Mandatory/assets/portal/portal-0.xpm", &w, &w);
+			"Mandatory/assets/portal/portalopen.xpm", &w, &w);
 }
 
 void	imgadd(t_graph *data, int x, int y, int base)
@@ -54,6 +54,9 @@ void	imgadd(t_graph *data, int x, int y, int base)
 		mlx_put_image_to_window(data->mlx, data->mlx_win, data->floor, x, y);
 	else if (base == 'B')
 		mlx_put_image_to_window(data->mlx, data->mlx_win, data->p_back, x, y);
+	else if (base == 'O')
+		mlx_put_image_to_window(data->mlx, data->mlx_win, data->portal_open,
+			x, y);
 }
 
 void	addimg(t_graph *data)

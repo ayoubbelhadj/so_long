@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move_bottom.c                                      :+:      :+:    :+:   */
+/*   move_down.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelhadj <abelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 19:31:10 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/02/18 20:32:27 by abelhadj         ###   ########.fr       */
+/*   Updated: 2023/02/19 15:11:15 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ void	move_down(t_graph *data)
 		&& data->cart[data->player.y + 1][data->player.x] != 'E')
 	{
 		down_move(data);
-		// if (!count_coins(data))
-		// 	opendor(data);
-		// if (data->cart[data->player.y][data->player.x] == 'O')
-		// 	succeed(data);
+		if (!coins(data))
+			openportal(data);
+		if (data->cart[data->player.y][data->player.x] == 'O')
+			win(data);
 	}
 }

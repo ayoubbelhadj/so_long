@@ -6,7 +6,7 @@
 /*   By: abelhadj <abelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 18:51:44 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/02/18 20:34:16 by abelhadj         ###   ########.fr       */
+/*   Updated: 2023/02/19 15:10:43 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ void	move_right(t_graph *data)
 			&& data->cart[data->player.y][data->player.x + 1] != 'E')
 	{
 		right_move(data);
-		// if (!count_coins(data))
-		// 	opendor(data);
-		// if (data->cart[data->player.y][data->player.x] == 'O')
-		// 	succeed(data);
+		if (!coins(data))
+			openportal(data);
+		if (data->cart[data->player.y][data->player.x] == 'O')
+			win(data);
 	}
 }

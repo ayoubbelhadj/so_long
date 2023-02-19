@@ -6,7 +6,7 @@
 /*   By: abelhadj <abelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 16:14:54 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/02/16 15:40:14 by abelhadj         ###   ########.fr       */
+/*   Updated: 2023/02/19 21:39:52 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,10 @@ char	*read_map(int fd)
 			break ;
 		if (ft_strlen(buff) <= 1)
 			ft_error("ERROR!\nEmpty line in map.\n");
-		tmp = map;
+		tmp = ft_strdup(map);
 		free(map);
 		map = ft_strjoin(tmp, buff);
+		free(tmp);
 		free(buff);
 	}
 	return (map);

@@ -6,7 +6,7 @@
 /*   By: abelhadj <abelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 16:02:00 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/02/14 18:33:54 by abelhadj         ###   ########.fr       */
+/*   Updated: 2023/02/19 21:21:27 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,13 +74,13 @@ static char	*readline(int fd, char *buff)
 	char	*str;
 	ssize_t	i;
 
-	str = malloc(5 + 1);
+	str = malloc(10 + 1);
 	if (!str)
 		return (NULL);
 	i = 1;
 	while (!ft_strchr(buff, '\n') && i != 0)
 	{
-		i = read(fd, str, 5);
+		i = read(fd, str, 10);
 		if (i == -1)
 		{
 			free(str);
