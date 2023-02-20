@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   name_check_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelhadj <abelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/14 16:10:43 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/02/20 16:04:46 by abelhadj         ###   ########.fr       */
+/*   Created: 2023/02/14 17:49:58 by abelhadj          #+#    #+#             */
+/*   Updated: 2023/02/20 15:54:48 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/so_long.h"
+#include "../include_bonus/so_long_bonus.h"
 
-int	main(int ac, char **av)
+int	name_check_bonus(char *name)
 {
-	int		fd;
-	char	*map;
+	int		namelen;
+	char	*str;
 
-	if (ac == 2)
-	{
-		if (!name_check(av[1]))
-		{
-			fd = open(av[1], O_RDONLY);
-			if (fd < 0)
-				ft_error("ERROR!\nPath map name invalid.\n");
-			map = read_map(fd);
-			if (!map || !ft_strncmp(map, "", 1))
-				ft_error("ERROR!!\nMap invalid.\n");
-			game(map);
-		}
-	}
+	namelen = ft_strlen_bonus(name);
+	if (namelen <= 4)
+		ft_error_bonus("ERROR!\nThe map name has to ended with \
+		.ber extention.\n");
+	str = name + (namelen - 4);
+	if (ft_strcmp_bonus(str, ".ber"))
+		ft_error_bonus("ERROR!\nThe map name has to ended with \
+		.ber extention.\n");
 	return (0);
 }

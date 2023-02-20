@@ -1,34 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   position_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelhadj <abelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/14 16:10:43 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/02/20 16:04:46 by abelhadj         ###   ########.fr       */
+/*   Created: 2023/02/15 19:05:51 by abelhadj          #+#    #+#             */
+/*   Updated: 2023/02/20 15:54:48 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/so_long.h"
+#include "../include_bonus/so_long_bonus.h"
 
-int	main(int ac, char **av)
+t_graph	*position_bonus(char **cart, t_graph *data)
 {
-	int		fd;
-	char	*map;
+	int		i;
+	int		j;
 
-	if (ac == 2)
+	i = 0;
+	while (cart[i])
 	{
-		if (!name_check(av[1]))
+		j = 0;
+		while (cart[i][j])
 		{
-			fd = open(av[1], O_RDONLY);
-			if (fd < 0)
-				ft_error("ERROR!\nPath map name invalid.\n");
-			map = read_map(fd);
-			if (!map || !ft_strncmp(map, "", 1))
-				ft_error("ERROR!!\nMap invalid.\n");
-			game(map);
+			if (cart[i][j] == 'P')
+			{
+				data->player.x = j;
+				data->player.y = i;
+			}
+			if (cart[i][j] == 'E')
+			{
+				data->exit.x = j;
+				data->exit.y = i;
+			}
+			j++;
 		}
+		i++;
 	}
-	return (0);
+	return (data);
 }

@@ -1,34 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   quit_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelhadj <abelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/14 16:10:43 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/02/20 16:04:46 by abelhadj         ###   ########.fr       */
+/*   Created: 2023/02/18 18:48:13 by abelhadj          #+#    #+#             */
+/*   Updated: 2023/02/20 15:54:48 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/so_long.h"
+#include "../include_bonus/so_long_bonus.h"
 
-int	main(int ac, char **av)
+int	quit_bonus(t_graph *data)
 {
-	int		fd;
-	char	*map;
-
-	if (ac == 2)
-	{
-		if (!name_check(av[1]))
-		{
-			fd = open(av[1], O_RDONLY);
-			if (fd < 0)
-				ft_error("ERROR!\nPath map name invalid.\n");
-			map = read_map(fd);
-			if (!map || !ft_strncmp(map, "", 1))
-				ft_error("ERROR!!\nMap invalid.\n");
-			game(map);
-		}
-	}
+	mlx_destroy_window(data->mlx, data->mlx_win);
+	exit(0);
 	return (0);
 }

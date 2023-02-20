@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   coins_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelhadj <abelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/14 16:10:43 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/02/20 16:04:46 by abelhadj         ###   ########.fr       */
+/*   Created: 2023/02/19 14:51:59 by abelhadj          #+#    #+#             */
+/*   Updated: 2023/02/20 15:54:48 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/so_long.h"
+#include "../include_bonus/so_long_bonus.h"
 
-int	main(int ac, char **av)
+int	coins_bonus(t_graph *data)
 {
-	int		fd;
-	char	*map;
+	int	i;
+	int	j;
+	int	cpt;
 
-	if (ac == 2)
+	i = 0;
+	cpt = 0;
+	while (data->cart[i])
 	{
-		if (!name_check(av[1]))
+		j = 0;
+		while (data->cart[i][j])
 		{
-			fd = open(av[1], O_RDONLY);
-			if (fd < 0)
-				ft_error("ERROR!\nPath map name invalid.\n");
-			map = read_map(fd);
-			if (!map || !ft_strncmp(map, "", 1))
-				ft_error("ERROR!!\nMap invalid.\n");
-			game(map);
+			if (data->cart[i][j] == 'C')
+				cpt++;
+			j++;
 		}
+		i++;
 	}
-	return (0);
+	return (cpt);
 }

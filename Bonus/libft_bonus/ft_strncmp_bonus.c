@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_strncmp_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelhadj <abelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/14 16:10:43 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/02/20 16:04:46 by abelhadj         ###   ########.fr       */
+/*   Created: 2022/10/09 21:18:58 by abelhadj          #+#    #+#             */
+/*   Updated: 2023/02/20 15:54:48 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/so_long.h"
+#include "../include_bonus/so_long_bonus.h"
 
-int	main(int ac, char **av)
+int	ft_strncmp_bonus(const char *s1, const char *s2, size_t n)
 {
-	int		fd;
-	char	*map;
+	size_t			i;
+	unsigned char	*str1;
+	unsigned char	*str2;
 
-	if (ac == 2)
-	{
-		if (!name_check(av[1]))
-		{
-			fd = open(av[1], O_RDONLY);
-			if (fd < 0)
-				ft_error("ERROR!\nPath map name invalid.\n");
-			map = read_map(fd);
-			if (!map || !ft_strncmp(map, "", 1))
-				ft_error("ERROR!!\nMap invalid.\n");
-			game(map);
-		}
-	}
-	return (0);
+	i = 0;
+	str1 = (unsigned char *)s1;
+	str2 = (unsigned char *)s2;
+	if (n == 0)
+		return (0);
+	while (str1[i] && str2[i] && str1[i] == str2[i] && i < n - 1)
+		i++;
+	return (str1[i] - str2[i]);
 }

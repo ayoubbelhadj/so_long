@@ -6,11 +6,11 @@
 /*   By: abelhadj <abelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 16:10:43 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/02/19 15:28:04 by abelhadj         ###   ########.fr       */
+/*   Updated: 2023/02/20 16:04:12 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/so_long_bonus.h"
+#include "include_bonus/so_long_bonus.h"
 
 int	main(int ac, char **av)
 {

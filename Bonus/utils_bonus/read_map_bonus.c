@@ -1,34 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   read_map_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelhadj <abelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/14 16:10:43 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/02/20 16:04:46 by abelhadj         ###   ########.fr       */
+/*   Created: 2023/02/15 16:14:54 by abelhadj          #+#    #+#             */
+/*   Updated: 2023/02/20 15:54:48 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/so_long.h"
+#include "../include_bonus/so_long_bonus.h"
 
-int	main(int ac, char **av)
+char	*read_map_bonus(int fd)
 {
-	int		fd;
+	char	*buff;
 	char	*map;
+	char	*tmp;
 
-	if (ac == 2)
+	map = ft_calloc_bonus(1, 1);
+	while (1)
 	{
-		if (!name_check(av[1]))
-		{
-			fd = open(av[1], O_RDONLY);
-			if (fd < 0)
-				ft_error("ERROR!\nPath map name invalid.\n");
-			map = read_map(fd);
-			if (!map || !ft_strncmp(map, "", 1))
-				ft_error("ERROR!!\nMap invalid.\n");
-			game(map);
-		}
+		buff = get_next_line_bonus(fd);
+		if (!buff)
+			break ;
+		if (ft_strlen_bonus(buff) <= 1)
+			ft_error_bonus("ERROR!\nEmpty line in map.\n");
+		tmp = ft_strdup_bonus(map);
+		free(map);
+		map = ft_strjoin_bonus(tmp, buff);
+		free(tmp);
+		free(buff);
 	}
-	return (0);
+	return (map);
 }
